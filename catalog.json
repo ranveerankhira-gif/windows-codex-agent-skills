@@ -28,7 +28,7 @@
       "invocation_policy": "explicit-only",
       "license": "MIT",
       "version": "0.1.0",
-      "archive_sha256": null
+      "archive_sha256": "4b1a682e79b84cd1381a137308c60edf14d0ff136ebf0be341dcd115d152e5c8"
     },
     {
       "name": "windows-storage-cleanup",
@@ -55,7 +55,7 @@
       "invocation_policy": "explicit-only",
       "license": "MIT",
       "version": "0.1.0",
-      "archive_sha256": null
+      "archive_sha256": "5103f9f014f92c10b0c7d487968e72221334627dadb76c2cb70d14ca9296b7e1"
     },
     {
       "name": "zhuomian-zhengli",
@@ -82,7 +82,7 @@
       "invocation_policy": "explicit-only",
       "license": "MIT",
       "version": "0.1.0",
-      "archive_sha256": null
+      "archive_sha256": "8f1365b952062808037447e71537ffd37f0bc6e7f0dce8343203afca2da2d7f1"
     },
     {
       "name": "ai-output-renamer",
@@ -109,7 +109,7 @@
       "invocation_policy": "explicit-only",
       "license": "MIT",
       "version": "0.1.0",
-      "archive_sha256": null
+      "archive_sha256": "ed62a9e0671179b26ae0594d1cd6a8653ef74b35b1c0fe0a32e63498ab4b3383"
     },
     {
       "name": "video-project-library-maintainer",
@@ -136,7 +136,7 @@
       "invocation_policy": "explicit-only",
       "license": "MIT",
       "version": "0.1.0",
-      "archive_sha256": null
+      "archive_sha256": "61dcbdc655d1d5c060988cf2c41113dbda17424202c3cd204deb6a07a6a03bdc"
     },
     {
       "name": "codex-task-renamer",
@@ -161,7 +161,7 @@
       "invocation_policy": "explicit-only",
       "license": "MIT",
       "version": "0.1.0",
-      "archive_sha256": null
+      "archive_sha256": "131f97a193966c3d12293b1939a1471d4e20aff9adcc04b0103b03b65ee553dc"
     }
   ]
 }
