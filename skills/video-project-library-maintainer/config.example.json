@@ -1,0 +1,4 @@
+{
+  "libraryRoot": "<ABSOLUTE_PATH_TO_VIDEO_PROJECT_LIBRARY>",
+  "notes": "Set VIDEO_PROJECT_LIBRARY_ROOT or pass --library-root. Use an absolute path outside this Skill directory; do not commit your real path."
+}

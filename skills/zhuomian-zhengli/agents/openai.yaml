@@ -1,0 +1,6 @@
+interface:
+  display_name: "桌面整理"
+  short_description: "先只读盘点，再经确认安全调整 Windows 桌面图标布局"
+  default_prompt: "使用 $zhuomian-zhengli 只读盘点桌面，尽量保留熟悉布局，并在我确认具体移动计划后再调整图标。"
+policy:
+  allow_implicit_invocation: false

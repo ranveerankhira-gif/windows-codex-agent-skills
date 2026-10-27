@@ -1,0 +1,5 @@
+{
+  "safeWinAppWrapper": "D:\\ExampleTools\\Safe-WinApp.ps1",
+  "expectedWrapperSha256": "replace-with-reviewed-64-character-sha256",
+  "notes": "Set SAFE_WINAPP_WRAPPER and SAFE_WINAPP_WRAPPER_SHA256 outside the repository. Do not commit real paths, window handles, account data, screenshots, or credentials."
+}

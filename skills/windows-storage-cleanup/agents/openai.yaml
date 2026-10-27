@@ -1,0 +1,7 @@
+interface:
+  display_name: "Windows 存储清理"
+  short_description: "先只读审计磁盘占用，再按确认的精确清单安全释放 Windows 空间"
+  default_prompt: "使用 $windows-storage-cleanup 先只读检查 Windows 磁盘占用，再按我确认的清单处理。"
+
+policy:
+  allow_implicit_invocation: false

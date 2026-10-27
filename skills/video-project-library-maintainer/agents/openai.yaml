@@ -1,0 +1,6 @@
+interface:
+  display_name: "视频工程资料管家"
+  short_description: "安全登记、分类、索引和维护视频工程资料，不移动或覆盖源文件"
+  default_prompt: "使用 $video-project-library-maintainer 预演登记这个视频工程；不要移动或覆盖源文件。"
+policy:
+  allow_implicit_invocation: false

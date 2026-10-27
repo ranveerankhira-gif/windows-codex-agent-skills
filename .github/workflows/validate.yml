@@ -1,0 +1,59 @@
+name: validate
+
+on:
+  push:
+    branches: [main, "codex/**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  portable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -X utf8 scripts/validate_repo.py
+      - run: python -X utf8 scripts/package_release.py --release all --verify-only
+      - run: python -X utf8 -m unittest discover -s scripts/tests -v
+      - run: python -X utf8 -m unittest discover -s skills/video-project-library-maintainer/tests -v
+      - run: python -m compileall -q skills scripts
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - shell: pwsh
+        run: python -X utf8 scripts/validate_repo.py
+      - shell: pwsh
+        run: python -X utf8 scripts/package_release.py --release all --verify-only
+      - shell: pwsh
+        run: python -X utf8 -m unittest discover -s scripts/tests -v
+      - shell: pwsh
+        run: python -X utf8 -m unittest discover -s skills/video-project-library-maintainer/tests -v
+      - shell: pwsh
+        run: |
+          if (Test-Path skills/windows-storage-cleanup/scripts/tests/Test-Summarize-WizTreeCsv.ps1) {
+            pwsh -NoProfile -File skills/windows-storage-cleanup/scripts/tests/Test-Summarize-WizTreeCsv.ps1
+          }
+      - shell: pwsh
+        run: |
+          if (Test-Path skills/ai-output-renamer/scripts/tests/Test-OwnedTemporaryDirectory.ps1) {
+            pwsh -NoProfile -File skills/ai-output-renamer/scripts/tests/Test-OwnedTemporaryDirectory.ps1
+          }
+      - shell: pwsh
+        run: |
+          if (Test-Path skills/ai-output-renamer/scripts/tests/Test-RenameTransaction.ps1) {
+            pwsh -NoProfile -File skills/ai-output-renamer/scripts/tests/Test-RenameTransaction.ps1
+          }
+      - shell: pwsh
+        run: |
+          if (Test-Path skills/zhuomian-zhengli/tests/Test-LayoutValidator.ps1) {
+            pwsh -NoProfile -File skills/zhuomian-zhengli/tests/Test-LayoutValidator.ps1
+          }

@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-26",
+  "policy": {
+    "allowed_classifications": [
+      "self-authored",
+      "substantially-adapted"
+    ],
+    "substantial_adaptation_requires": [
+      "fixed upstream repository and revision",
+      "upstream license preserved inside the Skill directory",
+      "SOURCE.md describing concrete structural and behavioral changes",
+      "changes beyond renaming, translation, trigger edits, or safety notes"
+    ]
+  },
+  "skills": [
+    {
+      "name": "ai-output-renamer",
+      "classification": "self-authored",
+      "license": "MIT",
+      "evidence": [
+        "Developed from the user's AI output-copy library workflow with hash identity, provenance retention, collision-safe writes, and undo transactions.",
+        "No external Skill upstream was identified during the file and history review."
+      ],
+      "upstream": null
+    },
+    {
+      "name": "codex-task-renamer",
+      "classification": "self-authored",
+      "license": "MIT",
+      "evidence": [
+        "Created for the user's Codex task-title preview and confirmation workflow.",
+        "No third-party scripts or upstream Skill content were found."
+      ],
+      "upstream": null
+    },
+    {
+      "name": "diannao-kongzhi",
+      "classification": "self-authored",
+      "license": "MIT",
+      "evidence": [
+        "Created as a bounded Windows UI Automation router for the user's local workflow.",
+        "The public copy depends on a separately supplied wrapper and contains no copied automation backend."
+      ],
+      "upstream": null
+    },
+    {
+      "name": "video-project-library-maintainer",
+      "classification": "self-authored",
+      "license": "MIT",
+      "evidence": [
+        "Created and tested for the user's local video-project library registration and maintenance workflow.",
+        "Its indexer, shortcut helper, classification rules, and tests are local implementations."
+      ],
+      "upstream": null
+    },
+    {
+      "name": "windows-storage-cleanup",
+      "classification": "self-authored",
+      "license": "MIT",
+      "evidence": [
+        "The Skill's upstream-sources reference explicitly records status none.",
+        "Its WizTree summarizer, risk classification, backup verification, and tests were implemented locally."
+      ],
+      "upstream": null
+    },
+    {
+      "name": "zhuomian-zhengli",
+      "classification": "self-authored",
+      "license": "MIT",
+      "evidence": [
+        "Developed locally from the user's Windows desktop-layout workflow and minimal-movement safeguards.",
+        "The layout validator, Explorer shell controller, plan schema, and tests are local implementations."
+      ],
+      "upstream": null
+    }
+  ],
+  "excluded": []
+}

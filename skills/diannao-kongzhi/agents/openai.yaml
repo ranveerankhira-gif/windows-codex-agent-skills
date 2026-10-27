@@ -1,0 +1,7 @@
+interface:
+  display_name: "电脑控制"
+  short_description: "用受限 UI Automation 安全控制 Windows 桌面应用"
+  default_prompt: "使用 $diannao-kongzhi 通过已审查且哈希锁定的受限包装器操作我明确指定的 Windows 桌面应用。"
+
+policy:
+  allow_implicit_invocation: false

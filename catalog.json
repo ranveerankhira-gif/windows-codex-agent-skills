@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "repository": "ranveerankhira-gif/windows-codex-agent-skills",
+  "skills": [
+    {
+      "name": "diannao-kongzhi",
+      "display_name_zh": "电脑控制",
+      "purpose_zh": "通过受限Windows UI Automation包装器操作桌面应用",
+      "release": "v0.1.0",
+      "platforms": [
+        "windows"
+      ],
+      "risk_level": "high",
+      "permissions": {
+        "network": false,
+        "filesystem_read": true,
+        "filesystem_write": true,
+        "credentials": false,
+        "external_state": true,
+        "cost_or_quota": false
+      },
+      "dependencies": [
+        "Windows 10/11",
+        "Windows PowerShell 5.1+",
+        "用户另行安装、审查并锁定SHA-256的Safe-WinApp.ps1受限包装器",
+        "与包装器兼容的Windows UI Automation后端"
+      ],
+      "invocation_policy": "explicit-only",
+      "license": "MIT",
+      "version": "0.1.0",
+      "archive_sha256": null
+    },
+    {
+      "name": "windows-storage-cleanup",
+      "display_name_zh": "Windows 存储清理",
+      "purpose_zh": "审计磁盘占用并按确认清单安全清理",
+      "release": "v0.1.0",
+      "platforms": [
+        "windows"
+      ],
+      "risk_level": "high",
+      "permissions": {
+        "network": true,
+        "filesystem_read": true,
+        "filesystem_write": true,
+        "credentials": false,
+        "external_state": true,
+        "cost_or_quota": false
+      },
+      "dependencies": [
+        "Windows 10/11",
+        "Windows PowerShell 5.1+或PowerShell 7+",
+        "可选：用户自行安装并获许可使用的WizTree"
+      ],
+      "invocation_policy": "explicit-only",
+      "license": "MIT",
+      "version": "0.1.0",
+      "archive_sha256": null
+    },
+    {
+      "name": "zhuomian-zhengli",
+      "display_name_zh": "桌面整理",
+      "purpose_zh": "盘点并安全调整Windows桌面图标布局",
+      "release": "v0.1.0",
+      "platforms": [
+        "windows"
+      ],
+      "risk_level": "high",
+      "permissions": {
+        "network": false,
+        "filesystem_read": true,
+        "filesystem_write": true,
+        "credentials": false,
+        "external_state": true,
+        "cost_or_quota": false
+      },
+      "dependencies": [
+        "Windows 10/11",
+        "PowerShell 7+",
+        "Windows Explorer Shell/COM（系统内置）"
+      ],
+      "invocation_policy": "explicit-only",
+      "license": "MIT",
+      "version": "0.1.0",
+      "archive_sha256": null
+    },
+    {
+      "name": "ai-output-renamer",
+      "display_name_zh": "输出中心智能命名",
+      "purpose_zh": "安全整理AI输出副本并生成中文语义名称",
+      "release": "v0.1.0",
+      "platforms": [
+        "windows"
+      ],
+      "risk_level": "high",
+      "permissions": {
+        "network": false,
+        "filesystem_read": true,
+        "filesystem_write": true,
+        "credentials": false,
+        "external_state": true,
+        "cost_or_quota": false
+      },
+      "dependencies": [
+        "Windows 10/11",
+        "PowerShell 7+",
+        "已有的AI输出副本库及其索引"
+      ],
+      "invocation_policy": "explicit-only",
+      "license": "MIT",
+      "version": "0.1.0",
+      "archive_sha256": null
+    },
+    {
+      "name": "video-project-library-maintainer",
+      "display_name_zh": "视频工程资料管家",
+      "purpose_zh": "登记、索引和维护本地视频工程资料库",
+      "release": "v0.1.0",
+      "platforms": [
+        "cross-platform",
+        "windows"
+      ],
+      "risk_level": "high",
+      "permissions": {
+        "network": false,
+        "filesystem_read": true,
+        "filesystem_write": true,
+        "credentials": false,
+        "external_state": true,
+        "cost_or_quota": false
+      },
+      "dependencies": [
+        "Python 3.10+",
+        "可选：Windows PowerShell 5.1+或PowerShell 7+（仅创建Windows桌面快捷方式时需要）"
+      ],
+      "invocation_policy": "explicit-only",
+      "license": "MIT",
+      "version": "0.1.0",
+      "archive_sha256": null
+    },
+    {
+      "name": "codex-task-renamer",
+      "display_name_zh": "Codex 任务改名器",
+      "purpose_zh": "预览并在确认后批量重命名Codex任务",
+      "release": "v0.1.0",
+      "platforms": [
+        "cross-platform"
+      ],
+      "risk_level": "high",
+      "permissions": {
+        "network": false,
+        "filesystem_read": false,
+        "filesystem_write": false,
+        "credentials": false,
+        "external_state": true,
+        "cost_or_quota": false
+      },
+      "dependencies": [
+        "提供任务列表、任务读取和标题修改原生工具的Codex环境"
+      ],
+      "invocation_policy": "explicit-only",
+      "license": "MIT",
+      "version": "0.1.0",
+      "archive_sha256": null
+    }
+  ]
+}

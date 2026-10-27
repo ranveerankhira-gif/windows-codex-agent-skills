@@ -1,0 +1,7 @@
+interface:
+  display_name: "Codex 任务改名器"
+  short_description: "读取对话内容，预览并安全批量重命名当前项目中的 Codex 侧栏任务"
+  default_prompt: "使用 $codex-task-renamer 检查当前项目的全部未归档任务，只生成带编号的完整改名预览，等我明确确认该预览后再执行。"
+
+policy:
+  allow_implicit_invocation: false

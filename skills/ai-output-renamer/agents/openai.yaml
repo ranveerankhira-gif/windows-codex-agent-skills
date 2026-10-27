@@ -1,0 +1,7 @@
+interface:
+  display_name: "输出中心智能命名"
+  short_description: "为 AI 输出中心的复制文件生成中文语义名称并进行安全整理"
+  default_prompt: "使用 $ai-output-renamer 整理 AI 输出中心中新收录的复制文件并生成中文语义名称。"
+
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,4 @@
+{
+  "libraryRoot": "D:\\Example\\AIOutputLibrary",
+  "notes": "Point only to an existing copy library that contains _系统与索引\\文件索引.json. Keep the real configuration outside the Skill directory. You may pass -LibraryRoot instead."
+}
