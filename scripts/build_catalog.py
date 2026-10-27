@@ -95,7 +95,7 @@ def main() -> int:
             "name": name,
             "display_name_zh": display_name(name),
             "purpose_zh": PURPOSE[name],
-            "release": "v0.1.0",
+            "release": "v0.1.1",
             "platforms": platforms,
             "risk_level": "high",
             "permissions": {
@@ -109,7 +109,7 @@ def main() -> int:
             "dependencies": DEPENDENCIES[name],
             "invocation_policy": "explicit-only",
             "license": "MIT",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "archive_sha256": None,
         })
     payload = {

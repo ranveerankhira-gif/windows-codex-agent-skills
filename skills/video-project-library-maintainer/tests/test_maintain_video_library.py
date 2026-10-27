@@ -334,7 +334,7 @@ class MaintainerTests(unittest.TestCase):
         original_replace = MOD.os.replace
 
         def fail_final_rename(source, target):
-            if Path(target) == project:
+            if Path(target).resolve(strict=False) == project.resolve(strict=False):
                 raise OSError("injected rename failure")
             return original_replace(source, target)
 

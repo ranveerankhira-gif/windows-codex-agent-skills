@@ -130,6 +130,16 @@ def is_within(child: Path, parent: Path) -> bool:
         return False
 
 
+def relative_under(child: Path, parent: Path, label: str) -> Path:
+    """Return a stable relative path after normalizing Windows long/8.3 aliases."""
+    resolved_child = child.resolve(strict=False)
+    resolved_parent = parent.resolve(strict=False)
+    try:
+        return resolved_child.relative_to(resolved_parent)
+    except ValueError as exc:
+        raise GateError(f"{label}路径不在预期根目录内: {child}") from exc
+
+
 def safe_child(parent: Path, relative: str | Path, label: str) -> Path:
     value = Path(relative)
     if value.is_absolute() or any(part in {"", ".", ".."} for part in value.parts):
@@ -291,7 +301,7 @@ def scan(source: Path) -> tuple[list[dict[str, Any]], list[str]]:
         for filename in files:
             path = root_path / filename
             if is_link(path): raise GateError(f"发现文件链接或重解析点: {path}")
-            relative = path.relative_to(source)
+            relative = relative_under(path, source, "扫描文件")
             key = relative.as_posix().casefold()
             if key in seen: raise GateError(f"相对路径重复: {relative}")
             seen.add(key)
@@ -486,7 +496,7 @@ def validate_bound_file(source: Path, label: str, record: Any) -> dict[str, Any]
         raise GateError(f"final-delivery 绑定缺少合法非负 size: {label}")
     if expected_size != after.st_size:
         raise GateError(f"final-delivery 绑定大小失效: {label}: {record.get('path')}")
-    return {"label": label, "path": path, "relative_path": path.relative_to(source).as_posix(),
+    return {"label": label, "path": path, "relative_path": relative_under(path, source, label).as_posix(),
             "sha256": actual, "size_bytes": after.st_size}
 
 
@@ -592,7 +602,7 @@ def discover_delivery_closure(source: Path, seed_entries: list[dict[str, Any]]) 
             except GateError as exc:
                 errors.append(str(exc))
                 continue
-            relative = resolved.relative_to(source).as_posix()
+            relative = relative_under(resolved, source, "正式交付依赖").as_posix()
             relative_key = relative.casefold()
             if relative_key in by_relative:
                 continue
@@ -642,7 +652,7 @@ def build_review_selection(source: Path, fallback: list[dict[str, Any]]) -> tupl
         return [], delivery
     manifest_path = Path(delivery["manifest"])
     closure.append({"label": "final_delivery_manifest", "path": manifest_path,
-                    "relative_path": manifest_path.relative_to(source).as_posix(),
+                    "relative_path": relative_under(manifest_path, source, "final-delivery清单").as_posix(),
                     "sha256": digest(manifest_path), "size_bytes": manifest_path.stat().st_size})
     labels_by_relative = {item["relative_path"].casefold(): item.get("label") for item in delivery["entries"]}
     selected: list[dict[str, Any]] = []
@@ -669,7 +679,7 @@ def build_review_selection(source: Path, fallback: list[dict[str, Any]]) -> tupl
             raise GateError(f"历史交付清单不能是链接或重解析点: {candidate}")
         selected.append({
             "source_path": str(candidate), "source_root": str(source), "source_role": "historical-delivery",
-            "source_relative_path": candidate.relative_to(source).as_posix(),
+            "source_relative_path": relative_under(candidate, source, "历史交付清单").as_posix(),
             "relative_path": f"historical-delivery/{candidate.name}", "size_bytes": candidate.stat().st_size,
             "sha256": digest(candidate), "review_destination": "01_项目说明",
             "review_relative_path": f"历史版本/{candidate.stem}/01_项目说明/delivery/{candidate.name}",
@@ -718,7 +728,7 @@ def tree_hashes(root: Path) -> dict[str, str]:
         return {}
     ensure_plain_tree(root, "哈希目录")
     return {
-        path.relative_to(root).as_posix(): digest(path)
+        relative_under(path, root, "哈希文件").as_posix(): digest(path)
         for path in sorted(root.rglob("*"))
         if path.is_file()
     }
@@ -1041,12 +1051,12 @@ def verify(args: argparse.Namespace) -> dict[str, Any]:
     for item in review_files:
         target = review_target(project, item)
         if target and str(item.get("review_relative_path", "")).startswith("当前正式版/"):
-            expected[target.relative_to(project / "01_给Codex审核").as_posix()] = item["sha256"]
+            expected[relative_under(target, project / "01_给Codex审核", "审核目标").as_posix()] = item["sha256"]
     current_root = project / "01_给Codex审核/当前正式版"
     if current_root.is_dir():
         ensure_plain_tree(current_root, "当前审核视图")
     actual = {
-        path.relative_to(project / "01_给Codex审核").as_posix(): digest(path)
+        relative_under(path, project / "01_给Codex审核", "审核文件").as_posix(): digest(path)
         for path in current_root.rglob("*") if path.is_file()
     } if current_root.is_dir() else {}
     missing = sorted(set(expected) - set(actual))

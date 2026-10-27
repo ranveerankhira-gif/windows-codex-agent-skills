@@ -42,7 +42,7 @@
 4. 如果目标目录已有同名Skill，先逐文件比较，不要静默覆盖。
 5. 重启Codex后，通过`$skill-name`显式调用。
 
-整套下载文件名为`windows-codex-agent-skills-v0.1.0.zip`。建议只安装确实需要的Skill。
+整套下载文件名为`windows-codex-agent-skills-v0.1.1.zip`。建议只安装确实需要的Skill。
 
 ## 共同安全边界
 
