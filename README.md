@@ -1,12 +1,29 @@
 # Windows 与 Codex 本地工具 Skills
 
-六个中文优先、显式调用、强调预览与可逆性的本地 Agent Skills，用于 Windows 桌面维护、Codex任务整理和本地资料库管理。
+**让 Codex 帮你整理 Windows，但每一步先预览、再确认、还能回退。**
 
-> Six explicit-only, auditable agent skills for Windows maintenance, bounded desktop automation, Codex task organization, and local file-library workflows.
+这里有 6 个中文优先的本地 Agent Skills，用于磁盘清理、桌面布局、文件副本命名、Codex 任务整理和本地视频资料库维护。它们全部显式调用，不会因为一句宽泛指令就擅自移动、覆盖或删除文件。
+
+> 6 explicit-only Codex skills for safer Windows cleanup, bounded desktop automation, task organization, and local file-library workflows.
 
 [![Skills](https://img.shields.io/badge/skills-6-2563eb)](#skill-目录)
+[![Latest release](https://img.shields.io/github/v/release/ranveerankhira-gif/windows-codex-agent-skills?label=release)](https://github.com/ranveerankhira-gif/windows-codex-agent-skills/releases/latest)
+[![Validate](https://github.com/ranveerankhira-gif/windows-codex-agent-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/ranveerankhira-gif/windows-codex-agent-skills/actions/workflows/validate.yml)
 [![Explicit only](https://img.shields.io/badge/invocation-explicit--only-d97706)](#共同安全边界)
 [![License: MIT](https://img.shields.io/badge/license-MIT-16a34a)](LICENSE)
+
+## 30 秒找到适合你的 Skill
+
+| 你现在想做什么 | 使用哪个 Skill |
+|---|---|
+| 查清磁盘空间被什么占用，再决定是否清理 | [`windows-storage-cleanup`](skills/windows-storage-cleanup) |
+| 整理桌面图标，但不移动真实文件 | [`zhuomian-zhengli`](skills/zhuomian-zhengli) |
+| 给 AI 输出副本生成易读中文名称，并保留撤销能力 | [`ai-output-renamer`](skills/ai-output-renamer) |
+| 维护本地视频工程索引 | [`video-project-library-maintainer`](skills/video-project-library-maintainer) |
+| 批量整理 Codex 侧栏任务名称 | [`codex-task-renamer`](skills/codex-task-renamer) |
+| 必须操作桌面应用，且没有更可靠的 API 或 CLI | [`diannao-kongzhi`](skills/diannao-kongzhi) |
+
+**立即使用：**前往 [最新 Release](https://github.com/ranveerankhira-gif/windows-codex-agent-skills/releases/latest)，按需下载单个 Skill，并用同一页面的 `SHA256SUMS.txt` 核对文件。
 
 ## 为什么建立这个仓库
 
@@ -27,7 +44,7 @@
 
 ## 安装
 
-正式版本请从GitHub Releases下载，并核对同一版本中的`SHA256SUMS.txt`。
+正式版本请从 [GitHub Releases](https://github.com/ranveerankhira-gif/windows-codex-agent-skills/releases/latest) 下载，并核对同一版本中的 `SHA256SUMS.txt`。
 
 ### 安装单个Skill
 
@@ -67,4 +84,8 @@ python -X utf8 scripts/validate_repo.py
 python -X utf8 scripts/package_release.py --release all --verify-only
 python -X utf8 -m unittest discover -s scripts/tests -v
 ```
+
+---
+
+如果你也希望本地自动化“先把计划摆在桌上，再碰文件”，欢迎点一个 ⭐，让更多 Windows 用户看到这套安全边界。
 
